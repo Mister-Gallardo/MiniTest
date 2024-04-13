@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { observer } from "mobx-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Test, { IQuestion } from "../store/store";
 import { useNavigate } from "react-router-dom";
 
@@ -16,15 +16,15 @@ export const AddQuestionWindow = observer(() => {
   const navigate = useNavigate();
   const [number, setNumber] = useState(1);
   const [added, setAdded] = useState(false);
-  const question = useRef("");
-  const answer = useRef("");
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
 
   function handleAddQuestion() {
     const questionForAdd: IQuestion = {
       id: Test.questions.length + 1,
       type: number,
-      question: question?.current?.value,
-      answers: answer?.current?.value.split(","),
+      question: question,
+      answers: answer.split(","),
     };
     Test.addQuestion(questionForAdd);
     setAdded(true);
@@ -80,7 +80,8 @@ export const AddQuestionWindow = observer(() => {
           <TextField
             variant="standard"
             label="Введите вопрос"
-            inputRef={question}
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
           ></TextField>
           <TextField
             variant="standard"
@@ -89,7 +90,8 @@ export const AddQuestionWindow = observer(() => {
                 ? "Введите ответ"
                 : "Введите ответы через запятую без пробелов (css,html,js)"
             }
-            inputRef={answer}
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
           ></TextField>
           <Button variant="contained" onClick={handleAddQuestion}>
             Добавить
