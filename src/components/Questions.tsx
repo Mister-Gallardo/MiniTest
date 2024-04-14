@@ -35,6 +35,7 @@ export const Questions: React.FC<IQuestions> = ({ question }) => {
         >
           {question.answers.map((answer) => (
             <FormControlLabel
+              key={answer}
               value={answer}
               control={<Radio />}
               label={answer}
@@ -49,6 +50,7 @@ export const Questions: React.FC<IQuestions> = ({ question }) => {
           <FormGroup>
             {question.answers.map((answer) => (
               <FormControlLabel
+                key={answer}
                 control={<Checkbox />}
                 label={answer}
                 sx={{ marginBottom: -1 }}

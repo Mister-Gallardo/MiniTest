@@ -33,6 +33,7 @@ const TestWindow = observer(() => {
 
   useEffect(() => {
     sessionStorage.setItem("step", number.toString());
+    // localStorage.setItem('questions', questions)
   }, [number]);
 
   if (seconds === 0 && minutes === 0) {
@@ -41,13 +42,15 @@ const TestWindow = observer(() => {
 
   function handleNumber() {
     setNumber((prev) => prev + 1);
-    console.log(number, questions.length);
+    // console.log(number, questions.length);
   }
 
   function handleNavigate() {
     navigate("/Results");
   }
 
+  
+  // console.log(questions)
   return (
     <Box
       sx={{

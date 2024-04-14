@@ -30,7 +30,7 @@ export const AddQuestionWindow = observer(() => {
     setAdded(true);
     setTimeout(() => {
       navigate("/");
-    }, 2000);
+    }, 1800);
   }
 
   return (

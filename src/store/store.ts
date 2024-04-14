@@ -1,17 +1,17 @@
 import { makeAutoObservable } from "mobx";
+import Questions from "../components/Questions";
 
 export interface IQuestion {
   id: number;
   type: number;
   question: string;
-  // answerNumber: number[];
   answers: string[];
 }
 
 type Questions = IQuestion[];
 
 const LSquestionsString: string | null = localStorage.getItem('questions');
-const LSquestions: Questions = LSquestionsString ? JSON.parse(LSquestionsString) : [];
+const LSquestions: Questions = LSquestionsString ? JSON.parse(LSquestionsString) : null;
 
 class Test {
   questions: Questions = LSquestions ? LSquestions : [
